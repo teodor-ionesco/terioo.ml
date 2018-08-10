@@ -101,7 +101,7 @@ require_once('bind.php');
 			<tbody>
 				<tr>
 					<td>E-mail:&nbsp;</td>
-					<td><a href="mailto:teodor.ionesco@gmail.com" target="_BLANK">teodor.ionesco@gmail.com</a></td>
+					<td><a href="mailto:webmaster@terioo.ml" target="_BLANK">webmaster@terioo.ml</a></td>
 				</tr>
 				<tr>
 					<td>Phone:&nbsp;</td>
