@@ -27,12 +27,16 @@ class Admin
 				
 				$tmp = $prepare -> fetch(PDO::FETCH_ASSOC);
 				
-				$prepare = $this -> database -> prepare('SELECT *
-														FROM features
-														WHERE features.pid = :id;');
-				$prepare -> execute([':id' => $id]);
-				
-				$tmp["features"] = $prepare -> fetchAll(PDO::FETCH_ASSOC);
+				if(!empty($tmp))
+				{
+					$prepare = $this -> database -> prepare('SELECT *
+															FROM features
+															WHERE features.pid = :id;');
+					$prepare -> execute([':id' => $id]);
+					
+					$tmp['state'] = $this -> generate_state($tmp['id']);
+					$tmp["features"] = $prepare -> fetchAll(PDO::FETCH_ASSOC);
+				}
 				
 				return $tmp;
 			}
@@ -45,21 +49,34 @@ class Admin
 		throw new Exception('Please input a valid id.');
 	}
 	
-	public function get_project($name)
+	public function get_project($id)
 	{
-		if(!empty($name))
+		if(!empty($id))
 		{
 			try {
 				$prepare = $this -> database -> prepare('SELECT *
 														FROM projects
-														LEFT OUTER JOIN features
-															ON projects.id = features.pid
-														WHERE projects.name = :name;');
-				$prepare -> execute([':name' => $name]);
+														WHERE projects.id = :id;');
+				$prepare -> execute([':id' => $id]);
 				
-				 var_dump($prepare -> fetchAll(PDO::FETCH_ASSOC));
+				$tmp = $prepare -> fetch();
 				
-				return;
+				if(!empty($tmp))
+				{
+					$prepare = $this -> database -> prepare('SELECT *
+															FROM features
+															WHERE features.pid = :id;');
+					$prepare -> execute([':id' => $id]);
+					
+					$tmp['state'] = $this -> generate_state($tmp['id']);
+					$tmp['features'] = $prepare -> fetchAll(PDO::FETCH_ASSOC);
+				}
+				else
+				{
+					$tmp['features'] = [];
+				}
+				
+				return $tmp;
 			}
 			catch(PDOException $e)
 			{
@@ -67,7 +84,7 @@ class Admin
 			}
 		}
 		
-		throw new Exception('Please input a valid name.');
+		throw new Exception('Please input a valid id.');
 	}
 	
 	public function get_projects()
