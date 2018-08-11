@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 10, 2018 at 08:06 PM
+-- Generation Time: Aug 11, 2018 at 03:53 PM
 -- Server version: 5.5.55
 -- PHP Version: 7.1.6
 
@@ -25,13 +25,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `features`
+--
+
+CREATE TABLE `features` (
+  `id` mediumint(9) NOT NULL,
+  `pid` smallint(6) NOT NULL,
+  `name` tinytext NOT NULL,
+  `finished` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `projects`
 --
 
 CREATE TABLE `projects` (
   `id` smallint(4) NOT NULL,
   `name` tinytext NOT NULL,
-  `state` tinytext NOT NULL,
   `github` tinytext NOT NULL,
   `website` tinytext NOT NULL,
   `start_date` tinytext NOT NULL,
@@ -62,6 +74,12 @@ CREATE TABLE `users` (
 --
 
 --
+-- Indexes for table `features`
+--
+ALTER TABLE `features`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `projects`
 --
 ALTER TABLE `projects`
@@ -79,10 +97,15 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `features`
+--
+ALTER TABLE `features`
+  MODIFY `id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+--
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` smallint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` smallint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT for table `users`
 --
