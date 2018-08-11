@@ -66,8 +66,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
---INSERT INTO `users` (`id`, `username`, `password`) VALUES
---(1, 'admin', '$2y$10$wpPsQ7/UwcdRJtKFrUIzkeRtz9m3RNYxitLb7xqXX0XPY3Q3nobX2');
+INSERT INTO `users` (`id`, `username`, `password`) VALUES
+(1, 'admin', '$2y$10$wpPsQ7/UwcdRJtKFrUIzkeRtz9m3RNYxitLb7xqXX0XPY3Q3nobX2');
 
 --
 -- Indexes for dumped tables
