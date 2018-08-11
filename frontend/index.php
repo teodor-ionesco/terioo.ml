@@ -67,6 +67,8 @@ require_once('bind.php');
 
 	$projects = (new App\Admin) -> get_projects();
 
+	$projects = is_array($projects) ? array_reverse($projects) : [];
+				
 	if(!empty($projects))
 	{
 		foreach($projects as $key => $array)
