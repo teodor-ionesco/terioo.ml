@@ -56,14 +56,14 @@ if(!empty($_GET['msg']))
 			<tbody>
 <?php
 
-	$projects = (new App\Admin) -> get_projects();
-
+	$projects = array_reverse((new App\Admin) -> get_projects());
+	
 	foreach($projects as $key => $array)
 	{
 		print("
 			<tr>
 				<td><a href=\"edit-project.php?id=$array[id]\" title=\"Edit this project's information\">$array[name]</a></td>
-				<td>$array[state]</td>
+				<td>Finished: <code>".$array["features"]["completed"] ."/". $array["features"]["all"]. "</code> features</td>
 				<td>$array[github]</td>
 				<td>$array[website]</td>
 				<td><code>$array[start_date]</code></td>

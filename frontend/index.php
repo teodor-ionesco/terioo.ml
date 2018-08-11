@@ -21,9 +21,15 @@ require_once('bind.php');
 				font-size: 20px;
 			}
 			
+			a 
+			{
+				text-decoration: none;
+			}
+			
 			a:hover
 			{
 				color: red;
+				text-decoration: underline;
 			}
 			
 			a:active
@@ -68,7 +74,7 @@ require_once('bind.php');
 			print('
 					<tr>
 						<td>'.$array['name'].'</td>
-						<td>'.$array['state'].'</td>
+						<td>Finished: <code>'.$array["features"]["completed"] .'/'. $array["features"]["all"]. '</code> features</td>
 						<td><a href="http://www.github.com/teodor-ionesco/'.$array['github'].'" target="_BLANK">'.$array['github'].'</a></td>
 						<td><a href="http://'.$array['website'].'" target="_BLANK">'.$array['website'].'</a></td>
 						<td><code>'.$array['start_date'].'</code></td>
