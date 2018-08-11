@@ -41,7 +41,7 @@ if(!empty($_POST['name']))
 	}
 	else
 	{
-		$data['features'] = 'N/A';
+		$data['features'] = [];
 	}
 	
 	$data["github"] = empty($_POST['github']) ? 'N/A' : $_POST['github']; 
